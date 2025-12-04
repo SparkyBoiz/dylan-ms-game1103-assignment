@@ -3,46 +3,46 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Manager_Transition : MonoBehaviour
+    [Prefab("Manager_Transition")]
+public class Manager_Transition : Singleton<Manager_Transition>
 {
-    public static Manager_Transition Instance { get; private set; }
+    private Image _fadeImage;
 
-    [Tooltip("The UI Image to use for the fade effect.")]
-    [SerializeField] private Image fadeImage;
-
-    [Tooltip("The duration of the fade in/out effect in seconds.")]
     [SerializeField] private float fadeDuration = 1.0f;
 
-    private void Awake()
+    protected override void OnAwake()
     {
-        // Singleton pattern to ensure only one instance of the transition manager exists.
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // Persist this object across scene loads.
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        base.OnAwake();
+        CreateFadeUI();
     }
 
-    /// <summary>
-    /// Public method to start the scene transition.
-    /// </summary>
-    /// <param name="sceneName">The name of the scene to load.</param>
+    private void CreateFadeUI()
+    {
+        GameObject canvasObject = new GameObject("TransitionCanvas");
+        canvasObject.transform.SetParent(transform);
+        Canvas canvas = canvasObject.AddComponent<Canvas>();
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvas.sortingOrder = 100;
+
+        GameObject imageObject = new GameObject("FadeImage");
+        imageObject.transform.SetParent(canvas.transform);
+        _fadeImage = imageObject.AddComponent<Image>();
+        _fadeImage.rectTransform.anchorMin = Vector2.zero;
+        _fadeImage.rectTransform.anchorMax = Vector2.one;
+        _fadeImage.rectTransform.offsetMin = Vector2.zero;
+        _fadeImage.rectTransform.offsetMax = Vector2.zero;
+        _fadeImage.color = new Color(0, 0, 0, 0);
+        _fadeImage.raycastTarget = false;
+    }
+
     public void LoadScene(string sceneName)
     {
         StartCoroutine(FadeTransition(sceneName));
     }
 
-    /// <summary>
-    /// Coroutine that handles the fade-out, scene load, and fade-in sequence.
-    /// </summary>
-    /// <param name="sceneName">The name of the scene to load.</param>
     private IEnumerator FadeTransition(string sceneName)
     {
-        yield return Fade(1f); // Fade to black
+        yield return Fade(1f);
 
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
         while (!asyncLoad.isDone)
@@ -50,28 +50,29 @@ public class Manager_Transition : MonoBehaviour
             yield return null;
         }
 
-        yield return Fade(0f); // Fade in from black
+        yield return Fade(0f);
     }
 
-    /// <summary>
-    /// Coroutine to fade the screen to a target alpha.
-    /// </summary>
-    /// <param name="targetAlpha">The target alpha value (0 for transparent, 1 for opaque).</param>
     private IEnumerator Fade(float targetAlpha)
     {
-        if (fadeImage == null) yield break;
+        if (_fadeImage == null)
+        {
+            yield break;
+        }
 
-        float startAlpha = fadeImage.color.a;
+        _fadeImage.raycastTarget = true;
+        float startAlpha = _fadeImage.color.a;
         float elapsedTime = 0f;
 
-        while (elapsedTime < fadeDuration / 2)
+        while (elapsedTime < fadeDuration)
         {
             elapsedTime += Time.deltaTime;
-            float newAlpha = Mathf.Lerp(startAlpha, targetAlpha, elapsedTime / (fadeDuration / 2));
-            fadeImage.color = new Color(0, 0, 0, newAlpha);
+            float newAlpha = Mathf.Lerp(startAlpha, targetAlpha, elapsedTime / fadeDuration);
+            _fadeImage.color = new Color(0, 0, 0, newAlpha);
             yield return null;
         }
 
-        fadeImage.color = new Color(0, 0, 0, targetAlpha);
+        _fadeImage.color = new Color(0, 0, 0, targetAlpha);
+        _fadeImage.raycastTarget = (targetAlpha > 0);
     }
 }

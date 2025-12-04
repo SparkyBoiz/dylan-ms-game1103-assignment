@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &627635500380049778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8533555972034642883}
+  - component: {fileID: 460383574867953043}
+  - component: {fileID: 910671194550339372}
+  m_Layer: 0
+  m_Name: Manager_Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8533555972034642883
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627635500380049778}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -185.10187, y: 112.521484, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &460383574867953043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627635500380049778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d8bd61b47fa8c46b95e3192a0da3cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Manager_Audio
+  MainVolume: 1
+  MusicVolume: 1
+  VoiceVolume: 1
+  SfxVolume: 1
+  _musicSource: {fileID: 0}
+  _voiceSource: {fileID: 0}
+  _sfxSource: {fileID: 0}
+  _musicTracks: []
+  _voiceClips: []
+  _sfxClips: []
+--- !u!114 &910671194550339372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627635500380049778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7639efe99d817324e8c42d7acae59606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OptionsUI
+  _mainVolumeSlider: {fileID: 9191131017532831674, guid: f7894e4342d62cb4aad11c489b2c862f, type: 3}
+  _musicVolumeSlider: {fileID: 7816390823345620547, guid: 7529fa926bb90334c96cd52a1c8af07a, type: 3}
+  _voiceVolumeSlider: {fileID: 8394611847199933252, guid: 0dcf86e47298f22488370a626a4f13b1, type: 3}
+  _sfxVolumeSlider: {fileID: 4877067584493101586, guid: ab3b8e1c153382a4ba1a1ad17ce24665, type: 3}
