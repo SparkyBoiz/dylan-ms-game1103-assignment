@@ -63,14 +63,12 @@ public class PlayerLookController : MonoBehaviour
             targetRotation.x = 0;
             targetRotation.z = 0;
 
-            // Apply the rotation to the player body.
             _playerBody.rotation = targetRotation;
         }
     }
 
     private void OnSettingsChanged(SettingType type)
     {
-        // Update sensitivities only if a relevant setting has changed
         if (type == SettingType.MouseX || type == SettingType.MouseY)
         {
             UpdateSensitivities();

@@ -17,20 +17,18 @@ public class Manager_Transition : Singleton<Manager_Transition>
 
     private void CreateFadeUI()
     {
-        // Ensure there's an EventSystem in the scene and persist it.
         if (FindFirstObjectByType<EventSystem>() == null)
         {
             var eventSystem = new GameObject("EventSystem", typeof(EventSystem), typeof(StandaloneInputModule));
         }
 
-        // Avoid creating a duplicate canvas if one already exists as a child.
         if (transform.Find("TransitionCanvas")) return;
 
         GameObject canvasObject = new GameObject("TransitionCanvas");
         canvasObject.transform.SetParent(transform);
         Canvas canvas = canvasObject.AddComponent<Canvas>();
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-        canvas.sortingOrder = 100; // High sorting order to ensure it's on top.
+        canvas.sortingOrder = 100;
 
         GameObject imageObject = new GameObject("FadeImage");
         imageObject.transform.SetParent(canvas.transform);

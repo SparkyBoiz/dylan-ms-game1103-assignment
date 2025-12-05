@@ -18,10 +18,8 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
             {
                 if (_instance == null)
                 {
-                    // Try to find an existing instance in the scene
                     _instance = FindFirstObjectByType<T>();
 
-                    // If no instance exists, create a new one
                     if (_instance == null)
                     {
                         GameObject singletonObject = new GameObject();
@@ -34,7 +32,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
         }
     }
 
-    protected virtual void Awake() // Changed to protected to allow overrides if needed
+    protected virtual void Awake()
     {
         if (_instance != null && _instance != this)
         {
@@ -49,7 +47,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
         }
     }
 
-    protected virtual void OnAwake() { } // For derived classes to override
+    protected virtual void OnAwake() { }
 
     protected virtual void OnDestroy()
     {
