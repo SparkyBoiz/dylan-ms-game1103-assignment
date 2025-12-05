@@ -1,7 +1,5 @@
 using UnityEngine;
-using System.Reflection;
-
-public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
 {
     private static T _instance;
     private static readonly object _lock = new object();
@@ -20,30 +18,15 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
             {
                 if (_instance == null)
                 {
-                    _instance = FindFirstObjectByType<T>(FindObjectsInactive.Include);
-                    
+                    // Try to find an existing instance in the scene
+                    _instance = FindFirstObjectByType<T>();
+
+                    // If no instance exists, create a new one
                     if (_instance == null)
                     {
-                        var attribute = typeof(T).GetCustomAttribute<PrefabAttribute>();
-                        if (attribute != null)
-                        {
-                            GameObject prefab = Resources.Load<GameObject>(attribute.Path);
-                            if (prefab != null)
-                            {
-                                GameObject go = Instantiate(prefab);
-                                go.name = $"{typeof(T).Name} (Singleton)";
-                            }
-                            else
-                            {
-                    
-                            }
-                        }
-                        else
-                        {
-                            GameObject singletonObject = new GameObject();
-                            singletonObject.name = $"{typeof(T).Name} (Singleton)";
-                            _instance = singletonObject.AddComponent<T>();
-                        }
+                        GameObject singletonObject = new GameObject();
+                        _instance = singletonObject.AddComponent<T>();
+                        singletonObject.name = $"{typeof(T).Name} (Singleton)";
                     }
                 }
                 return _instance;
@@ -51,21 +34,30 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         }
     }
 
-    protected virtual void Awake()
+    protected virtual void Awake() // Changed to protected to allow overrides if needed
     {
-        if (_instance == null)
+        if (_instance != null && _instance != this)
         {
-            _instance = this as T;
+            Debug.LogWarning($"Duplicate Singleton of type {typeof(T).Name}. Destroying the new one.");
+            Destroy(gameObject);
+        }
+        else
+        {
+            _instance = (T)this;
             DontDestroyOnLoad(gameObject);
             OnAwake();
         }
-        else if (_instance != this)
-        {
-            Destroy(gameObject);
-        }
     }
 
-    protected virtual void OnAwake() { }
+    protected virtual void OnAwake() { } // For derived classes to override
+
+    protected virtual void OnDestroy()
+    {
+        if (_instance == this)
+        {
+            _instance = null;
+        }
+    }
 
     protected virtual void OnApplicationQuit()
     {

@@ -654,6 +654,7 @@ GameObject:
   m_Component:
   - component: {fileID: 820453365}
   - component: {fileID: 820453366}
+  - component: {fileID: 820453367}
   m_Layer: 5
   m_Name: Slider_ShadowQuality
   m_TagString: Untagged
@@ -728,12 +729,25 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1064201215}
   m_Direction: 1
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 5
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &820453367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820453364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e065fa4dd4430449b3c39004fa14136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Slider_Setting
+  _settingType: 7
 --- !u!1 &902685439
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,6 +869,7 @@ GameObject:
   m_Component:
   - component: {fileID: 993454671}
   - component: {fileID: 993454672}
+  - component: {fileID: 993454673}
   m_Layer: 5
   m_Name: Slider_MouseX
   m_TagString: Untagged
@@ -935,6 +950,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &993454673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993454670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e065fa4dd4430449b3c39004fa14136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Slider_Setting
+  _settingType: 4
 --- !u!224 &1046623259 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3766695878614361857, guid: b117103bd1a68334eb3ab2f2b4455f85, type: 3}
@@ -1571,6 +1599,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1600710617}
+  - component: {fileID: 1600710618}
   m_Layer: 5
   m_Name: '*Sliders*'
   m_TagString: Untagged
@@ -1600,6 +1629,18 @@ RectTransform:
   m_AnchoredPosition: {x: 56.5, y: 10.580017}
   m_SizeDelta: {x: 1427, y: 764.22253}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1600710618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600710616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7639efe99d817324e8c42d7acae59606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Options_UI
 --- !u!1 &1638930470
 GameObject:
   m_ObjectHideFlags: 0
@@ -1835,6 +1876,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1784210522}
   - component: {fileID: 1784210523}
+  - component: {fileID: 1784210524}
   m_Layer: 5
   m_Name: Slider_MouseY
   m_TagString: Untagged
@@ -1915,6 +1957,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1784210524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784210521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e065fa4dd4430449b3c39004fa14136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Slider_Setting
+  _settingType: 5
 --- !u!1 &1805806289
 GameObject:
   m_ObjectHideFlags: 0
@@ -1925,6 +1980,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1805806290}
   - component: {fileID: 1805806291}
+  - component: {fileID: 1805806292}
   m_Layer: 5
   m_Name: Slider_ShaderQuality
   m_TagString: Untagged
@@ -1999,12 +2055,25 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1898542161}
   m_Direction: 1
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 5
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1805806292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805806289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e065fa4dd4430449b3c39004fa14136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Slider_Setting
+  _settingType: 6
 --- !u!1 &1898542160
 GameObject:
   m_ObjectHideFlags: 0
@@ -2526,11 +2595,56 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8394611847199933252, guid: 0dcf86e47298f22488370a626a4f13b1, type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394611847199933252, guid: 0dcf86e47298f22488370a626a4f13b1, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394611847199933252, guid: 0dcf86e47298f22488370a626a4f13b1, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394611847199933252, guid: 0dcf86e47298f22488370a626a4f13b1, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4867492448076628691, guid: 462874d873cad014e9a7bcd3ca606641, type: 3}
+    - target: {fileID: 8394611847199933252, guid: 0dcf86e47298f22488370a626a4f13b1, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetVoiceVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394611847199933252, guid: 0dcf86e47298f22488370a626a4f13b1, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Manager_Settings, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4564226977345611900, guid: 0dcf86e47298f22488370a626a4f13b1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 621519192552044588}
   m_SourcePrefab: {fileID: 100100000, guid: 0dcf86e47298f22488370a626a4f13b1, type: 3}
+--- !u!1 &621519192552044587 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4564226977345611900, guid: 0dcf86e47298f22488370a626a4f13b1, type: 3}
+  m_PrefabInstance: {fileID: 621519192552044586}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &621519192552044588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621519192552044587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e065fa4dd4430449b3c39004fa14136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Slider_Setting
+  _settingType: 2
 --- !u!1001 &2155511521920078006
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2647,11 +2761,60 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9191131017532831674, guid: f7894e4342d62cb4aad11c489b2c862f, type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9191131017532831674, guid: f7894e4342d62cb4aad11c489b2c862f, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9191131017532831674, guid: f7894e4342d62cb4aad11c489b2c862f, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9191131017532831674, guid: f7894e4342d62cb4aad11c489b2c862f, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9191131017532831674, guid: f7894e4342d62cb4aad11c489b2c862f, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9191131017532831674, guid: f7894e4342d62cb4aad11c489b2c862f, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9191131017532831674, guid: f7894e4342d62cb4aad11c489b2c862f, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1555984651772190837, guid: f7894e4342d62cb4aad11c489b2c862f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2155511521920078008}
   m_SourcePrefab: {fileID: 100100000, guid: f7894e4342d62cb4aad11c489b2c862f, type: 3}
+--- !u!1 &2155511521920078007 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1555984651772190837, guid: f7894e4342d62cb4aad11c489b2c862f, type: 3}
+  m_PrefabInstance: {fileID: 2155511521920078006}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2155511521920078008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2155511521920078007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e065fa4dd4430449b3c39004fa14136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Slider_Setting
+  _settingType: 0
 --- !u!1001 &3169440876937210932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2861,6 +3024,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7816390823345620547, guid: 7529fa926bb90334c96cd52a1c8af07a, type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7816390823345620547, guid: 7529fa926bb90334c96cd52a1c8af07a, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7816390823345620547, guid: 7529fa926bb90334c96cd52a1c8af07a, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7816390823345620547, guid: 7529fa926bb90334c96cd52a1c8af07a, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4867492448076628691, guid: 462874d873cad014e9a7bcd3ca606641, type: 3}
+    - target: {fileID: 7816390823345620547, guid: 7529fa926bb90334c96cd52a1c8af07a, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetMusicVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 7816390823345620547, guid: 7529fa926bb90334c96cd52a1c8af07a, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Manager_Settings, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 7867932694720727294, guid: 7529fa926bb90334c96cd52a1c8af07a, type: 3}
       propertyPath: m_Name
       value: Slider_Music
@@ -2868,8 +3055,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7867932694720727294, guid: 7529fa926bb90334c96cd52a1c8af07a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5838745042574921099}
   m_SourcePrefab: {fileID: 100100000, guid: 7529fa926bb90334c96cd52a1c8af07a, type: 3}
+--- !u!1 &5838745042574921096 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7867932694720727294, guid: 7529fa926bb90334c96cd52a1c8af07a, type: 3}
+  m_PrefabInstance: {fileID: 5838745042574921095}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5838745042574921099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5838745042574921096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e065fa4dd4430449b3c39004fa14136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Slider_Setting
+  _settingType: 1
 --- !u!1001 &5910114972514310795
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2974,6 +3182,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4877067584493101586, guid: ab3b8e1c153382a4ba1a1ad17ce24665, type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4877067584493101586, guid: ab3b8e1c153382a4ba1a1ad17ce24665, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4877067584493101586, guid: ab3b8e1c153382a4ba1a1ad17ce24665, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4877067584493101586, guid: ab3b8e1c153382a4ba1a1ad17ce24665, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4867492448076628691, guid: 462874d873cad014e9a7bcd3ca606641, type: 3}
+    - target: {fileID: 4877067584493101586, guid: ab3b8e1c153382a4ba1a1ad17ce24665, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetSfxVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 4877067584493101586, guid: ab3b8e1c153382a4ba1a1ad17ce24665, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Manager_Settings, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 4912375611962764018, guid: ab3b8e1c153382a4ba1a1ad17ce24665, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2989,8 +3221,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 437383409856703308, guid: ab3b8e1c153382a4ba1a1ad17ce24665, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5910114972514310797}
   m_SourcePrefab: {fileID: 100100000, guid: ab3b8e1c153382a4ba1a1ad17ce24665, type: 3}
+--- !u!1 &5910114972514310796 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 437383409856703308, guid: ab3b8e1c153382a4ba1a1ad17ce24665, type: 3}
+  m_PrefabInstance: {fileID: 5910114972514310795}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5910114972514310797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5910114972514310796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e065fa4dd4430449b3c39004fa14136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Slider_Setting
+  _settingType: 3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

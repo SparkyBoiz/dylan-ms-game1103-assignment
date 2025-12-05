@@ -8,15 +8,8 @@ public class Sound
     public AudioClip clip;
 }
 
-[Prefab("Manager_Audio")]
 public class Manager_Audio : Singleton<Manager_Audio>
 {
-    [Header("Volume Controls")]
-    [Range(0f, 1f)] public float MainVolume = 1.0f;
-    [Range(0f, 1f)] public float MusicVolume = 1.0f;
-    [Range(0f, 1f)] public float VoiceVolume = 1.0f;
-    [Range(0f, 1f)] public float SfxVolume = 1.0f;
-
     [Header("Audio Sources")]
     private AudioSource _musicSource;
     private AudioSource _voiceSource;
@@ -40,8 +33,29 @@ public class Manager_Audio : Singleton<Manager_Audio>
         _sfxSource = new GameObject("SfxSource").AddComponent<AudioSource>();
         _sfxSource.transform.SetParent(transform);
 
-        LoadSettings();
+        if (Manager_Settings.Instance != null)
+        {
+            Manager_Settings.Instance.OnSettingsChanged += OnSettingsChanged;
+        }
+
         ApplyAllVolumeSettings();
+
+        if (_musicTracks.Length > 0)
+        {
+            PlayMusic(_musicTracks[0].name);
+        }
+    }
+
+    public void PlayMusic(string name)
+    {
+        Sound s = Array.Find(_musicTracks, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Music track not found: " + name);
+            return;
+        }
+        _musicSource.clip = s.clip;
+        _musicSource.Play();
     }
 
     public void PlayVoice(string name)
@@ -68,55 +82,30 @@ public class Manager_Audio : Singleton<Manager_Audio>
         _sfxSource.PlayOneShot(s.clip);
     }
 
-    public void SetMainVolume(float volume)
+    protected override void OnDestroy()
     {
-        MainVolume = volume;
-        ApplyAllVolumeSettings();
-        SaveSettings();
+        if (Manager_Settings.Instance != null)
+        {
+            Manager_Settings.Instance.OnSettingsChanged -= OnSettingsChanged;
+        }
+        base.OnDestroy();
     }
 
-    public void SetMusicVolume(float volume)
+    private void OnSettingsChanged(SettingType type)
     {
-        MusicVolume = volume;
-        ApplyAllVolumeSettings();
-        SaveSettings();
-    }
-
-    public void SetVoiceVolume(float volume)
-    {
-        VoiceVolume = volume;
-        ApplyAllVolumeSettings();
-        SaveSettings();
-    }
-
-    public void SetSfxVolume(float volume)
-    {
-        SfxVolume = volume;
-        ApplyAllVolumeSettings();
-        SaveSettings();
-    }
-
-    private void SaveSettings()
-    {
-        PlayerPrefs.SetFloat("MainVolume", MainVolume);
-        PlayerPrefs.SetFloat("MusicVolume", MusicVolume);
-        PlayerPrefs.SetFloat("VoiceVolume", VoiceVolume);
-        PlayerPrefs.SetFloat("SfxVolume", SfxVolume);
-        PlayerPrefs.Save();
-    }
-
-    private void LoadSettings()
-    {
-        MainVolume = PlayerPrefs.GetFloat("MainVolume", 1.0f);
-        MusicVolume = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
-        VoiceVolume = PlayerPrefs.GetFloat("VoiceVolume", 1.0f);
-        SfxVolume = PlayerPrefs.GetFloat("SfxVolume", 1.0f);
+        switch (type)
+        {
+            case SettingType.Main:
+            case SettingType.Music:
+            case SettingType.Voice:
+            case SettingType.Sfx:
+                ApplyAllVolumeSettings();
+                break;
+        }
     }
 
     private void ApplyAllVolumeSettings()
     {
-        if (_musicSource != null) _musicSource.volume = MainVolume * MusicVolume;
-        if (_voiceSource != null) _voiceSource.volume = MainVolume * VoiceVolume;
-        if (_sfxSource != null) _sfxSource.volume = MainVolume * SfxVolume;
+        if (_musicSource != null) _musicSource.volume = Manager_Settings.Instance.MainVolume * Manager_Settings.Instance.MusicVolume;
     }
 }
