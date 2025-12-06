@@ -51,7 +51,6 @@ public class Manager_Audio : Singleton<Manager_Audio>
         Sound s = Array.Find(_musicTracks, sound => sound.name == name);
         if (s == null)
         {
-            Debug.LogWarning("Music track not found: " + name);
             return;
         }
         _musicSource.clip = s.clip;
@@ -63,7 +62,6 @@ public class Manager_Audio : Singleton<Manager_Audio>
         Sound s = Array.Find(_voiceClips, sound => sound.name == name);
         if (s == null)
         {
-            Debug.LogWarning("Voice clip not found: " + name);
             return;
         }
         _voiceSource.Stop();
@@ -76,7 +74,6 @@ public class Manager_Audio : Singleton<Manager_Audio>
         Sound s = Array.Find(_sfxClips, sound => sound.name == name);
         if (s == null)
         {
-            Debug.LogWarning("SFX not found: " + name);
             return;
         }
         _sfxSource.PlayOneShot(s.clip);

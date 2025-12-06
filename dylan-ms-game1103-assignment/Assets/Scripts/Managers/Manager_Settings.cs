@@ -102,6 +102,5 @@ public class Manager_Settings : Singleton<Manager_Settings>
     {
         QualitySettings.SetQualityLevel(ShaderQuality, true);
         QualitySettings.shadowResolution = (ShadowResolution)ShadowQuality;
-        Debug.Log($"Applied Graphics Settings: ShaderQuality={ShaderQuality}, ShadowQuality={ShadowQuality}");
     }
 }
