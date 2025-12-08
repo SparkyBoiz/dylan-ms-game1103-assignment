@@ -33,6 +33,9 @@ public class Enemy_AI : MonoBehaviour
     public Transform firePoint;
     public float fireRate = 1f;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip shootSfx;
+
     private NavMeshAgent agent;
     private Transform playerTransform;
     private float nextFireTime = 0f;
@@ -147,6 +150,11 @@ public class Enemy_AI : MonoBehaviour
 
         if (Time.time >= nextFireTime)
         {
+            if (shootSfx != null && Manager_Audio.Instance != null)
+            {
+                Manager_Audio.Instance.PlaySoundAtPoint(shootSfx, firePoint.position);
+            }
+
             Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
             nextFireTime = Time.time + fireRate;
         }

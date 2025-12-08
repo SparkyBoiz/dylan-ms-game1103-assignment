@@ -154,3 +154,4 @@ MonoBehaviour:
   flipSpeed: 3
   bobSpeed: 2
   bobHeight: 0.25
+  pickupSfx: {fileID: 8300000, guid: b5ccaf5e6be353d409d1eafb4efd012d, type: 3}

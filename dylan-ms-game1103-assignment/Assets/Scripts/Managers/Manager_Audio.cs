@@ -79,6 +79,20 @@ public class Manager_Audio : Singleton<Manager_Audio>
         _sfxSource.PlayOneShot(s.clip);
     }
 
+    public void PlaySoundAtPoint(AudioClip clip, Vector3 position)
+    {
+        if (clip == null) return;
+
+        GameObject tempAudio = new GameObject("TempAudio");
+        tempAudio.transform.position = position;
+        AudioSource audioSource = tempAudio.AddComponent<AudioSource>();
+        audioSource.clip = clip;
+        audioSource.volume = Manager_Settings.Instance.MainVolume * 
+                             Manager_Settings.Instance.SfxVolume;
+        audioSource.Play();
+        Destroy(tempAudio, clip.length);
+    }
+
     protected override void OnDestroy()
     {
         if (Manager_Settings.Instance != null)
@@ -103,6 +117,12 @@ public class Manager_Audio : Singleton<Manager_Audio>
 
     private void ApplyAllVolumeSettings()
     {
-        if (_musicSource != null) _musicSource.volume = Manager_Settings.Instance.MainVolume * Manager_Settings.Instance.MusicVolume;
+        if (Manager_Settings.Instance == null) return;
+
+        float mainVolume = Manager_Settings.Instance.MainVolume;
+
+        if (_musicSource != null) _musicSource.volume = mainVolume * Manager_Settings.Instance.MusicVolume;
+        if (_voiceSource != null) _voiceSource.volume = mainVolume * Manager_Settings.Instance.VoiceVolume;
+        if (_sfxSource != null) _sfxSource.volume = mainVolume * Manager_Settings.Instance.SfxVolume;
     }
 }

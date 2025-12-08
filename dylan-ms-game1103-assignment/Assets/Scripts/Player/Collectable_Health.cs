@@ -11,6 +11,9 @@ public class Collectable_Health : MonoBehaviour
     public float bobSpeed = 2f;
     public float bobHeight = 0.25f;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip pickupSfx;
+
     private Vector3 startPos;
     private Vector3 startScale;
 
@@ -39,6 +42,10 @@ public class Collectable_Health : MonoBehaviour
             if (playerHealth != null)
             {
                 playerHealth.AddHealth(healthAmount);
+                if (pickupSfx != null && Manager_Audio.Instance != null)
+                {
+                    Manager_Audio.Instance.PlaySoundAtPoint(pickupSfx, transform.position);
+                }
                 Destroy(gameObject);
             }
         }

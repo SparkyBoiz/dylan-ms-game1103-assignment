@@ -119,6 +119,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &125458964
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 125458966}
+  - component: {fileID: 125458965}
+  m_Layer: 0
+  m_Name: Trigger_Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &125458965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125458964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c71aaf4ac553804e8cf0f5a942ed8e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Trigger_Music
+  musicTrackName: Menu Music
+--- !u!4 &125458966
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125458964}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 934.8731, y: 273.4469, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &299816609
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -128,8 +173,64 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 460383574867953043, guid: 46762f7e81bfa2745b09b53265564f56, type: 3}
-      propertyPath: _musicTracks.Array.size
+      propertyPath: _sfxClips.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 460383574867953043, guid: 46762f7e81bfa2745b09b53265564f56, type: 3}
+      propertyPath: _voiceClips.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 460383574867953043, guid: 46762f7e81bfa2745b09b53265564f56, type: 3}
+      propertyPath: _musicTracks.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 460383574867953043, guid: 46762f7e81bfa2745b09b53265564f56, type: 3}
+      propertyPath: _sfxClips.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 48fb51a24af1df94394f9f2f6d791c26, type: 3}
+    - target: {fileID: 460383574867953043, guid: 46762f7e81bfa2745b09b53265564f56, type: 3}
+      propertyPath: _sfxClips.Array.data[0].name
+      value: Player_Death
+      objectReference: {fileID: 0}
+    - target: {fileID: 460383574867953043, guid: 46762f7e81bfa2745b09b53265564f56, type: 3}
+      propertyPath: _sfxClips.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: dfeb809542b967b4c8d67aee6d5a9aed, type: 3}
+    - target: {fileID: 460383574867953043, guid: 46762f7e81bfa2745b09b53265564f56, type: 3}
+      propertyPath: _sfxClips.Array.data[1].name
+      value: Enemy_Death
+      objectReference: {fileID: 0}
+    - target: {fileID: 460383574867953043, guid: 46762f7e81bfa2745b09b53265564f56, type: 3}
+      propertyPath: _sfxClips.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 84989e05b3f0d664e9a94c9a25269ecd, type: 3}
+    - target: {fileID: 460383574867953043, guid: 46762f7e81bfa2745b09b53265564f56, type: 3}
+      propertyPath: _sfxClips.Array.data[2].name
+      value: Shot_Fired
+      objectReference: {fileID: 0}
+    - target: {fileID: 460383574867953043, guid: 46762f7e81bfa2745b09b53265564f56, type: 3}
+      propertyPath: _sfxClips.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b5ccaf5e6be353d409d1eafb4efd012d, type: 3}
+    - target: {fileID: 460383574867953043, guid: 46762f7e81bfa2745b09b53265564f56, type: 3}
+      propertyPath: _sfxClips.Array.data[3].name
+      value: Collectable_Pickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 460383574867953043, guid: 46762f7e81bfa2745b09b53265564f56, type: 3}
+      propertyPath: _sfxClips.Array.data[4].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1e0523de0fccfed429abe7def43595ee, type: 3}
+    - target: {fileID: 460383574867953043, guid: 46762f7e81bfa2745b09b53265564f56, type: 3}
+      propertyPath: _sfxClips.Array.data[4].name
+      value: Button_Press
+      objectReference: {fileID: 0}
+    - target: {fileID: 460383574867953043, guid: 46762f7e81bfa2745b09b53265564f56, type: 3}
+      propertyPath: _musicTracks.Array.data[0].name
+      value: Menu Music
+      objectReference: {fileID: 0}
+    - target: {fileID: 460383574867953043, guid: 46762f7e81bfa2745b09b53265564f56, type: 3}
+      propertyPath: _musicTracks.Array.data[1].name
+      value: Background Music
       objectReference: {fileID: 0}
     - target: {fileID: 627635500380049778, guid: 46762f7e81bfa2745b09b53265564f56, type: 3}
       propertyPath: m_Name
@@ -671,6 +772,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Manager_Button
       objectReference: {fileID: 0}
+    - target: {fileID: 8834844185216046700, guid: bec17ea46fddb2f49ab6c6a89ff60d4c, type: 3}
+      propertyPath: buttonClickSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 1e0523de0fccfed429abe7def43595ee, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1328,3 +1433,4 @@ SceneRoots:
   - {fileID: 1384678614}
   - {fileID: 2072863505}
   - {fileID: 1339541172}
+  - {fileID: 125458966}

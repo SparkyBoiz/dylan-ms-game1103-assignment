@@ -234,6 +234,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1951984857540763333}
   lowHealthSprite: {fileID: -4470722601308992580, guid: bc39f228f67130841ab428214f56bc9b, type: 3}
   lowHealthThreshold: 30
+  deathSfx: {fileID: 8300000, guid: 48fb51a24af1df94394f9f2f6d791c26, type: 3}
 --- !u!114 &1071808991884082319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,6 +290,7 @@ MonoBehaviour:
   fireRate: 0.5
   maxAmmo: 30
   reloadTime: 2
+  shootSfx: {fileID: 8300000, guid: 84989e05b3f0d664e9a94c9a25269ecd, type: 3}
 --- !u!114 &599667977021610157
 MonoBehaviour:
   m_ObjectHideFlags: 0

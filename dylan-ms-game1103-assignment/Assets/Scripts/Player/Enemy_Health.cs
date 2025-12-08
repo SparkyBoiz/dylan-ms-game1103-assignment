@@ -25,6 +25,9 @@ public class Enemy_Health : MonoBehaviour
     [Header("Loot")]
     [SerializeField] private List<LootItem> lootTable = new List<LootItem>();
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip deathSfx;
+
     public static event Action OnEnemyKilled;
 
     private int currentHealth;
@@ -52,7 +55,14 @@ public class Enemy_Health : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            if (deathSfx != null && Manager_Audio.Instance != null) 
+            {
+                Manager_Audio.Instance.PlaySoundAtPoint(deathSfx, transform.position);
+                Debug.Log("Enemy died!");
+            }
+
             OnEnemyKilled?.Invoke();
+            Debug.Log("Enemy killed!");
             HandleLootDrop();
             Destroy(gameObject);
         }
@@ -66,6 +76,11 @@ public class Enemy_Health : MonoBehaviour
         {
             spriteRenderer.sprite = lowHealthSprite;
             isLowHealthState = true;
+        }
+        else if (currentHealth > lowHealthThreshold && isLowHealthState)
+        {
+            spriteRenderer.sprite = defaultSprite;
+            isLowHealthState = false;
         }
     }
 

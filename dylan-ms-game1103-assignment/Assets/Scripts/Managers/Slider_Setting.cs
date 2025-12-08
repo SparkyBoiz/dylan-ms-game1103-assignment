@@ -34,13 +34,25 @@ public class Slider_Setting : MonoBehaviour
 
     private void OnSliderValueChanged(float value)
     {
-        Manager_Settings.Instance.SetSetting(_settingType, value);
+        float valueToSet = value;
+        if (IsVolumeSlider())
+        {
+            valueToSet = 1f - value;
+        }
+        Manager_Settings.Instance.SetSetting(_settingType, valueToSet);
     }
 
     private void UpdateSliderValue()
     {
         float settingValue = Manager_Settings.Instance.GetSetting(_settingType);
-        _slider.SetValueWithoutNotify(settingValue);
+        if (IsVolumeSlider())
+        {
+            _slider.SetValueWithoutNotify(1f - settingValue);
+        }
+        else
+        {
+            _slider.SetValueWithoutNotify(settingValue);
+        }
     }
 
     private void OnDestroy()
@@ -49,5 +61,13 @@ public class Slider_Setting : MonoBehaviour
         {
             Manager_Settings.Instance.OnSettingsChanged -= OnSettingsChanged;
         }
+    }
+
+    private bool IsVolumeSlider()
+    {
+        return _settingType == SettingType.Main ||
+               _settingType == SettingType.Music ||
+               _settingType == SettingType.Sfx ||
+               _settingType == SettingType.Voice;
     }
 }

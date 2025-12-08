@@ -10,6 +10,9 @@ public class Player_Health : MonoBehaviour
     [SerializeField] private Sprite lowHealthSprite;
     [SerializeField] private int lowHealthThreshold = 30;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip deathSfx;
+
     public int CurrentHealth => currentHealth;
 
     private int currentHealth;
@@ -52,6 +55,12 @@ public class Player_Health : MonoBehaviour
 
     private void Die()
     {
+        if (deathSfx != null && Manager_Audio.Instance != null)
+        {
+            // Play at camera position for consistent volume regardless of player location
+            Manager_Audio.Instance.PlaySoundAtPoint(deathSfx, Camera.main.transform.position);
+        }
+
         Manager_Game gameManager = FindObjectOfType<Manager_Game>();
         if (gameManager != null)
         {

@@ -13,6 +13,9 @@ public class Player_Shoot : MonoBehaviour
     public int maxAmmo = 30;
     public float reloadTime = 2f;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip shootSfx;
+
     public int CurrentAmmo => currentAmmo;
     public bool IsReloading => isReloading;
 
@@ -51,6 +54,11 @@ public class Player_Shoot : MonoBehaviour
 
     private void Shoot()
     {
+        if (shootSfx != null && Manager_Audio.Instance != null)
+        {
+            Manager_Audio.Instance.PlaySoundAtPoint(shootSfx, firePoint.position);
+        }
+
         Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         currentAmmo--;
     }
