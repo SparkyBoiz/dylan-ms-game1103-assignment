@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 [Serializable]
@@ -11,7 +12,9 @@ public class Sound
 public class Manager_Audio : Singleton<Manager_Audio>
 {
     [Header("Audio Sources")]
-    private AudioSource _musicSource;
+    private AudioSource _musicSource1;
+    private AudioSource _musicSource2;
+    private AudioSource _activeMusicSource;
     private AudioSource _voiceSource;
     private AudioSource _sfxSource;
 
@@ -20,12 +23,21 @@ public class Manager_Audio : Singleton<Manager_Audio>
     [SerializeField] private Sound[] _voiceClips;
     [SerializeField] private Sound[] _sfxClips;
 
+    private Coroutine _musicFadeCoroutine;
+
     protected override void OnAwake()
     {
         base.OnAwake();
-        _musicSource = new GameObject("MusicSource").AddComponent<AudioSource>();
-        _musicSource.transform.SetParent(transform);
-        _musicSource.loop = true;
+        DontDestroyOnLoad(gameObject);
+        _musicSource1 = new GameObject("MusicSource1").AddComponent<AudioSource>();
+        _musicSource1.transform.SetParent(transform);
+        _musicSource1.loop = true;
+
+        _musicSource2 = new GameObject("MusicSource2").AddComponent<AudioSource>();
+        _musicSource2.transform.SetParent(transform);
+        _musicSource2.loop = true;
+
+        _activeMusicSource = _musicSource1;
 
         _voiceSource = new GameObject("VoiceSource").AddComponent<AudioSource>();
         _voiceSource.transform.SetParent(transform);
@@ -42,19 +54,57 @@ public class Manager_Audio : Singleton<Manager_Audio>
 
         if (_musicTracks.Length > 0)
         {
-            PlayMusic(_musicTracks[0].name);
+            // Play initial track without fading
+            _activeMusicSource.clip = _musicTracks[0].clip;
+            _activeMusicSource.Play();
         }
     }
 
-    public void PlayMusic(string name)
+    public void PlayMusic(string name, float fadeDuration = 1.0f)
     {
         Sound s = Array.Find(_musicTracks, sound => sound.name == name);
         if (s == null)
         {
             return;
         }
-        _musicSource.clip = s.clip;
-        _musicSource.Play();
+        
+        if (_activeMusicSource.clip == s.clip && _activeMusicSource.isPlaying)
+        {
+            return;
+        }
+
+        if (_musicFadeCoroutine != null)
+        {
+            StopCoroutine(_musicFadeCoroutine);
+        }
+        _musicFadeCoroutine = StartCoroutine(CrossfadeMusic(s.clip, fadeDuration));
+    }
+
+    private IEnumerator CrossfadeMusic(AudioClip newClip, float duration)
+    {
+        AudioSource oldSource = _activeMusicSource;
+        AudioSource newSource = (_activeMusicSource == _musicSource1) ? _musicSource2 : _musicSource1;
+
+        newSource.clip = newClip;
+        newSource.Play();
+
+        float timer = 0f;
+        float oldSourceStartVolume = oldSource.volume;
+
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            float progress = timer / duration;
+            float targetVolume = Manager_Settings.Instance.MainVolume * Manager_Settings.Instance.MusicVolume;
+            oldSource.volume = Mathf.Lerp(oldSourceStartVolume, 0, progress);
+            newSource.volume = Mathf.Lerp(0, targetVolume, progress);
+            yield return null;
+        }
+
+        oldSource.Stop();
+        _activeMusicSource = newSource;
+        _activeMusicSource.volume = Manager_Settings.Instance.MainVolume * Manager_Settings.Instance.MusicVolume;
+        _musicFadeCoroutine = null;
     }
 
     public void PlayVoice(string name)
@@ -121,7 +171,13 @@ public class Manager_Audio : Singleton<Manager_Audio>
 
         float mainVolume = Manager_Settings.Instance.MainVolume;
 
-        if (_musicSource != null) _musicSource.volume = mainVolume * Manager_Settings.Instance.MusicVolume;
+        // If a fade is not in progress, apply volume directly. Otherwise, the coroutine handles it.
+        if (_musicFadeCoroutine == null)
+        {
+            float musicVolume = mainVolume * Manager_Settings.Instance.MusicVolume;
+            if (_activeMusicSource != null) _activeMusicSource.volume = musicVolume;
+        }
+
         if (_voiceSource != null) _voiceSource.volume = mainVolume * Manager_Settings.Instance.VoiceVolume;
         if (_sfxSource != null) _sfxSource.volume = mainVolume * Manager_Settings.Instance.SfxVolume;
     }
